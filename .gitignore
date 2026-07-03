@@ -15,6 +15,7 @@ pretrained_model/
 *.npz
 *.npy
 *.csv
+!assets/open_set_results.csv
 
 .tmp/
 .vscode/
@@ -23,3 +24,4 @@ pretrained_model/
 *.crdownload
 *.docx
 *.pdf
+

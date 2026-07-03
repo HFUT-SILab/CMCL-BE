@@ -28,7 +28,7 @@ CMCL-BE/
 |-- utils/                  # 数据集、损失、日志、路径工具
 |-- triditional_method/     # EBOCV 方向特征提取
 |-- VMamba/                 # 内置 VMamba/Mamba 代码和 selective_scan 源码
-|-- assets/                 # 轻量结果表图
+|-- assets/                 # 轻量开集结果表
 |-- requirements.txt
 `-- README.md
 ```
@@ -157,13 +157,19 @@ python train_val/auto.py \
 python train_val/show_best.py --output ./output --train-split all
 ```
 
-## 结果表图
+## 开集实验结果
 
-`assets/` 中保留了轻量结果表图，便于 README 展示和快速参考：
+DRAF TransMixer 主线模型的开集实验结果如下。`TAR@FAR=1e-6` 是 `train_val/show_best.py` 默认使用的最优 checkpoint 选择指标。
 
-![模块消融表](assets/module_ablation_table.png)
+| 数据集 | Checkpoint | AUC | EER | TAR@FAR=1e-4 | TAR@FAR=1e-5 | TAR@FAR=1e-6 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| CASIA | 14760 | 0.999585 | 0.010667 | 0.950000 | 0.940667 | 0.935333 |
+| HFUT | 14760 | 0.999963 | 0.002583 | 0.937294 | 0.788205 | 0.697661 |
+| PolyU | 14760 | 1.000000 | 0.000242 | 0.999758 | 0.999394 | 0.998121 |
+| TongJi | 18860 | 0.997329 | 0.004877 | 0.988333 | 0.979947 | 0.969912 |
+| VERA | 13940 | 0.998763 | 0.015960 | 0.940404 | 0.909495 | 0.898182 |
 
-![参数消融表](assets/parameter_ablation_table.png)
+完整结果表见 [`assets/open_set_results.csv`](assets/open_set_results.csv)。
 
 ## Citation
 
@@ -174,3 +180,4 @@ Coming soon.
 ## Acknowledgements
 
 本项目内置 VMamba/Mamba 相关代码，用于 TransMixer 上下文分支和 CUDA selective_scan 扩展。如果使用本仓库代码，也请遵循并引用相关上游项目。
+

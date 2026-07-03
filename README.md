@@ -28,7 +28,7 @@ CMCL-BE/
 |-- utils/                  # Dataset, losses, logging, path helpers
 |-- triditional_method/     # EBOCV directional feature extraction
 |-- VMamba/                 # Vendored VMamba/Mamba code and selective_scan source
-|-- assets/                 # Lightweight result/table figures
+|-- assets/                 # Lightweight open-set result table
 |-- requirements.txt
 `-- README.md
 ```
@@ -157,13 +157,19 @@ To summarize the best validation results only:
 python train_val/show_best.py --output ./output --train-split all
 ```
 
-## Result Tables
+## Open-Set Results
 
-Lightweight table images are included in `assets/` for reference:
+Open-set results of the DRAF TransMixer mainline are summarized below. `TAR@FAR=1e-6` is the default metric used by `train_val/show_best.py` for best-checkpoint selection.
 
-![Module ablation table](assets/module_ablation_table.png)
+| Dataset | Checkpoint | AUC | EER | TAR@FAR=1e-4 | TAR@FAR=1e-5 | TAR@FAR=1e-6 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| CASIA | 14760 | 0.999585 | 0.010667 | 0.950000 | 0.940667 | 0.935333 |
+| HFUT | 14760 | 0.999963 | 0.002583 | 0.937294 | 0.788205 | 0.697661 |
+| PolyU | 14760 | 1.000000 | 0.000242 | 0.999758 | 0.999394 | 0.998121 |
+| TongJi | 18860 | 0.997329 | 0.004877 | 0.988333 | 0.979947 | 0.969912 |
+| VERA | 13940 | 0.998763 | 0.015960 | 0.940404 | 0.909495 | 0.898182 |
 
-![Parameter ablation table](assets/parameter_ablation_table.png)
+The full result table is available at [`assets/open_set_results.csv`](assets/open_set_results.csv).
 
 ## Citation
 
@@ -174,3 +180,4 @@ Coming soon.
 ## Acknowledgements
 
 This project vendors VMamba/Mamba-related code for the TransMixer context branch and CUDA selective scan extension. Please also cite and follow the licenses of the upstream projects if you use this code.
+
